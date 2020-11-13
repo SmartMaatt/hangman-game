@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"pl.polsl.lab1.mateusz.plonka.controller"},{"l":"pl.polsl.lab1.mateusz.plonka.model"},{"l":"pl.polsl.lab1.mateusz.plonka.view"}]

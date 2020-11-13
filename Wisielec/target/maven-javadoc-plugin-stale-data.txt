@@ -1,0 +1,28 @@
+cmd.exe
+/X
+/C
+""C:\Program Files\Java\jdk-14\bin\javadoc.exe" @options @packages"
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\allclasses-index.html = 1605268232702
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\allpackages-index.html = 1605268232712
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\constant-values.html = 1605268232441
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\deprecated-list.html = 1605268232603
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\element-list = 1605268232345
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\help-doc.html = 1605268232750
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\index-all.html = 1605268232686
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\index.html = 1605268232615
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\javadoc.bat = 1605268171239
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\member-search-index.js = 1605268232675
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\member-search-index.zip = 1605268232679
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\options = 1605268231106
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\overview-summary.html = 1605268232737
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\overview-tree.html = 1605268232588
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\package-search-index.js = 1605268232645
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\package-search-index.zip = 1605268232660
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\packages = 1605268231107
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\script.js = 1605268232769
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\search.js = 1605268232772
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\serialized-form.html = 1605268232461
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\stylesheet.css = 1605268232762
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\system-properties.html = 1605268232724
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\type-search-index.js = 1605268232667
+C:\Users\Mateusz\Documents\NetBeansProjects\Wisielec\target\site\apidocs\type-search-index.zip = 1605268232669
