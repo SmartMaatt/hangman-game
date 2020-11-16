@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"pl.polsl.lab1.mateusz.plonka.controller","l":"Controller"},{"p":"pl.polsl.lab1.mateusz.plonka.model","l":"HangmanException"},{"p":"pl.polsl.lab1.mateusz.plonka.model","l":"HangmanGame"},{"p":"pl.polsl.lab1.mateusz.plonka.model","l":"Player"},{"p":"pl.polsl.lab1.mateusz.plonka.view","l":"View"}]

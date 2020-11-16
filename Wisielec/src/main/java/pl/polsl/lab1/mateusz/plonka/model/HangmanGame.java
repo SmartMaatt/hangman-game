@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import pl.polsl.lab1.mateusz.plonka.view.*;
-
 /**
  * Main class of the game
  * @author Mateusz Płonka
@@ -23,7 +21,7 @@ public class HangmanGame {
     private int MAX_ERRORS;
     // Word to find
     private String chosenWord;
-    private char[] wordToFind;
+    private ArrayList<Character> wordToFind = new ArrayList<Character>();
      
  
      /*METHODS*/
@@ -53,13 +51,13 @@ public class HangmanGame {
      * @param word String to be converted info array of chars
      */
     private void createWordToFind(String word){
-        this.wordToFind = new char[word.length()];
+        this.wordToFind = new ArrayList<Character>();
         
         for(int i=0; i<word.length(); i++){
             if(word.charAt(i) != ' ')
-                this.wordToFind[i] = '_';
+                this.wordToFind.add('_');
             else
-                this.wordToFind[i] = ' ';
+                this.wordToFind.add(' ');
         }
     }
      
@@ -121,7 +119,14 @@ public class HangmanGame {
     * @return True if chosen and toBeFound words are the same, False when not
     */
     public boolean compareWords(){
-        String tmp = String.valueOf(this.wordToFind);
+        
+        StringBuilder builder = new StringBuilder(this.wordToFind.size());
+        for(Character ch: this.wordToFind)
+        {
+            builder.append(ch);
+        }
+        String tmp = builder.toString();
+        
         if(this.chosenWord.equals(tmp)) return true;
         else return false;
     }
@@ -159,13 +164,18 @@ public class HangmanGame {
     }
     
     //Getter of WordToFind
-    public char[] getWordToFind() {
+    public ArrayList<Character> getWordToFind() {
         return wordToFind;
     }
     
     //Setter of ChosenWord
     public void setChosenWord(String word){
         this.chosenWord = word;
-        createWordToFind(word);
     }
+
+    public void setWordToFind(ArrayList<Character> wordToFind) {
+        this.wordToFind = wordToFind;
+    }
+    
+    
 }

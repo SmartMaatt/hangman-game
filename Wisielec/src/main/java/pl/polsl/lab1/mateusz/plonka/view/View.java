@@ -1,7 +1,10 @@
 package pl.polsl.lab1.mateusz.plonka.view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 import pl.polsl.lab1.mateusz.plonka.model.Player;
 
@@ -41,22 +44,31 @@ public class View {
      * Displays all elements of ArrayList with strings
      * @param array ArrayList of string to display
      */
-    static public void displayArrayList(ArrayList<String> array){
-        for(int i = 0; i<array.size(); i++){
-            System.out.println("[" + i + "]" + array.get(i));
-        }
+    static public void displayArrayList(ArrayList array){
+        
+        //Converting ArrayList into List to use Lambda and streams in one shot
+        List<String> data = array;
+
+        data.stream() // Turning list into stream
+                .collect(HashMap::new, (h, o) -> {
+                    h.put(h.size(), o);
+                }, (h, o) -> {
+                }) // Creating a map of the index to the object
+                .forEach((i, o) -> { //Usage of a BiConsumer forEach!
+                    System.out.println(String.format("[%d] %s", i, o));
+                });
     }
     
     /**
      * Displays unfound word
      * @param wToFind Word that is to find in this round
-     * @param size    Size of word that needs to be found
      */
-    static public void displayUnfoundWord(char[] wToFind, int size){
-        for(int i = 0; i<size; i++){
-            System.out.print(wToFind[i] + " ");
-        }
-         System.out.print("\n");
+    static public void displayUnfoundWord(ArrayList<Character> wToFind){
+        
+        //No need to use index as above
+        //Simple usage of stream
+        wToFind.stream().forEach((ch) -> System.out.print(ch + " "));
+        System.out.print("\n");
     }
     
     /**
@@ -66,9 +78,9 @@ public class View {
      * @param wToFindSize   Size of word that needs to be found
      * @param maxErrors     Maximum number of errors that could be done in this round
      */
-    static public void gameScrean(Player myPlayer, char[] wToFind, int wToFindSize, int maxErrors){
+    static public void gameScrean(Player myPlayer, ArrayList<Character> wToFind, int maxErrors){
         System.out.println("\n\n\nHANGMAN_GAME\n========================\n");
-        displayUnfoundWord(wToFind, wToFindSize);
+        displayUnfoundWord(wToFind);
         System.out.println("\nSTATS:");
         System.out.println("Player Name: " + myPlayer.getName());
         System.out.println("Tries:" + myPlayer.getTries() + " | Errors: " + myPlayer.getFails() + "/" + maxErrors);
