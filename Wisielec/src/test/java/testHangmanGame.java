@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -31,18 +32,7 @@ public class testHangmanGame {
     @ParameterizedTest
     @ValueSource(strings = {"test", "test.tx", "empty.txt"}) // incorrect extension and empty file
     void testReadBankFail(String candidate) {
-        //GIVEN
-        boolean test = true;
-        String msg = "";
-        //WHEN
-        try {
-            myGame.readBank(candidate);
-        } catch (HangmanException e) {
-            msg = e.getMessage();
-            test = false;
-        }
-        //THEN
-        assertFalse(test, "Error occured " + msg);
+        assertThrows(HangmanException.class, () -> myGame.readBank(candidate));
     }
     
     /**
@@ -52,16 +42,7 @@ public class testHangmanGame {
     @ParameterizedTest
     @ValueSource(strings = {"test.txt"}) // correct file
     void testReadBankSucces(String candidate) {
-        //GIVEN
-        boolean test = true;
-        //WHEN
-        try {
-            myGame.readBank(candidate);
-        } catch (HangmanException e) {
-            test = false;
-        }
-        //THEN
-        assertTrue(test, "File loaded successfuly!");
+        assertDoesNotThrow(() -> myGame.readBank(candidate));
     }
     
     /**
