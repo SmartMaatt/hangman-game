@@ -1,0 +1,4 @@
+--patch-module
+pl.polsl.lab.mateusz.plonka=_
+--add-reads
+pl.polsl.lab.mateusz.plonka=ALL-UNNAMED
