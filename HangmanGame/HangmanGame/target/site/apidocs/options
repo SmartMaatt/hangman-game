@@ -1,0 +1,26 @@
+--class-path
+'C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar;C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar;C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar;C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar'
+--module-path
+'C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-win.jar;C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-win.jar;C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar;C:/Users/Mateusz/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar'
+--patch-module
+pl.polsl.lab.mateusz.plonka='C:/Users/Mateusz/Desktop/HangmanGameNew/HangmanGame/src/main/java'
+-encoding
+'UTF-8'
+-protected
+--module-source-path
+'C:/Users/Mateusz/Desktop/HangmanGameNew/HangmanGame/target/site/apidocs/src'
+-author
+-bottom
+'Copyright &#169; 2020. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Mateusz/Desktop/HangmanGameNew/HangmanGame/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'HangmanGame 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'HangmanGame 1.0-SNAPSHOT API'

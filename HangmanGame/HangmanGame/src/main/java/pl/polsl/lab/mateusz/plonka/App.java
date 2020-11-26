@@ -25,8 +25,9 @@ public class App extends Application {
 
     /**
      * Main javaFX method to execute first scene
+     *
      * @param stage program main stage
-     * @throws IOException 
+     * @throws IOException
      */
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,18 +40,20 @@ public class App extends Application {
 
     /**
      * Sets FXML loader to scene variable
+     *
      * @param fxml Name of Scene to jump
-     * @throws IOException 
+     * @throws IOException
      */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-    
+
     /**
      * Execute FXMLloader from given name
+     *
      * @param fxml name of scene to jump
      * @return loaded fxml
-     * @throws IOException 
+     * @throws IOException
      */
     private static Parent loadFXML(String fxml) throws IOException {
         fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
@@ -58,25 +61,24 @@ public class App extends Application {
     }
 
     //Getter of FXMLloader
-    public static FXMLLoader getLoader(){
+    public static FXMLLoader getLoader() {
         return fxmlLoader;
     }
-    
+
     //Getter of Scene
     public static Scene getScene() {
         return scene;
     }
-  
+
     //Setter of GameVersion - [0] Gui, [1] Console
-    static void setGameVersion(int GameVersion){
+    static void setGameVersion(int GameVersion) {
         App.GameVersion = GameVersion;
     }
-    
+
     //Getter of GameVersion - [0] Gui, [1] Console
-    static int getGameVersion(){
+    static int getGameVersion() {
         return App.GameVersion;
     }
-    
 
     /**
      * Main method to be executed when program starts
@@ -88,9 +90,9 @@ public class App extends Application {
      * when Mode = 0)
      */
     public static void main(String[] args) {
-        
+
         launch();
-        if(App.getGameVersion() == 1){
+        if (App.getGameVersion() == 1) {
             int gameStatus = -1;        //Error (-1), Game filed(0), Game won(1)
             boolean gameOver = false;   //When true -> end program
 
@@ -108,7 +110,7 @@ public class App extends Application {
 
             //Game runs until it ends, so simple ;p
             while (!gameOver) {
-               
+
                 //Creating new game and checking if it was succeeded
                 if (myControl.newGame()) {
                     myView.displayLine("Game created succesfuly!");
