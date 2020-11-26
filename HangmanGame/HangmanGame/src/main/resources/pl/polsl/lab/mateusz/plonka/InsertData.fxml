@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="240.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.polsl.lab.mateusz.plonka.InsertData">
+   <children>
+      <Text fx:id="msg" layoutX="105.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER">
+         <children>
+            <TextField fx:id="TextBox" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="400.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="30.0">
+         <children>
+            <Button fx:id="btnClose" layoutX="267.0" layoutY="155.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" scaleShape="false" style="-fx-background-color: #ff0000;" text="Exit" textFill="WHITE">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnCnt" layoutX="158.0" layoutY="155.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" scaleShape="false" text="Continue">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Text fx:id="msgResult" layoutX="10.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Siema" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </Text>
+   </children>
+</VBox>
