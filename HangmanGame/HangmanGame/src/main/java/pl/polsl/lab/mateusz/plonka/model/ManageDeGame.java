@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 /**
  * Class controlls logic of game
- *
  * @author Mateusz Płonka
  * @version v1.2
  */
@@ -38,6 +37,7 @@ public class ManageDeGame {
         return mode;
     }
 
+    
     /*Setters*/
     public void setMode(int mode) {
         if (mode > -1 && mode < 3) {
@@ -82,7 +82,7 @@ public class ManageDeGame {
 
         //Check argument with players name
         this.playerName = playerName;
-        if ((this.playerName.equals(" ")) || (this.playerName.length() > 20)) {
+        if((this.playerName.equals(" ")) || (this.playerName.length() > 20)){
             needToAsk = true;
         }
 
@@ -321,6 +321,7 @@ public class ManageDeGame {
         return succes;
     }
 
+    
     /**
      * Main method of game what carries gui and game algorythm managment
      *
@@ -401,5 +402,5 @@ public class ManageDeGame {
                 return true;
             }
         }
-    }
+    }  
 }

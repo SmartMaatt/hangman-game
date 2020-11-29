@@ -8,68 +8,105 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.polsl.lab.mateusz.plonka.SetPlayerDataController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.polsl.lab.mateusz.plonka.SetPlayerDataController">
    <children>
-      <Text layoutX="116.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HangmanGame">
+      <Text layoutX="126.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HangmanGame">
          <font>
             <Font name="System Bold" size="50.0" />
          </font>
       </Text>
-      <Text layoutX="316.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert player data">
+      <Text layoutX="326.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert player data">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Group layoutX="67.0" layoutY="-36.0">
+      <VBox layoutX="126.0" layoutY="144.0" prefHeight="200.0" prefWidth="410.0">
          <children>
-            <Label contentDisplay="TOP" layoutX="85.0" layoutY="194.0" prefHeight="21.0" prefWidth="135.0" text="1.Choose mode" />
-            <Group layoutY="1.0">
+            <HBox alignment="CENTER" layoutX="180.0" layoutY="159.0" prefHeight="40.0" prefWidth="400.0">
                <children>
-                  <RadioButton fx:id="choose_mode0" layoutX="228.0" layoutY="179.0" mnemonicParsing="false" onAction="#choose_mode" selected="true" text="Read from file">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="choose_mode" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="choose_mode1" layoutX="228.0" layoutY="203.0" mnemonicParsing="false" onAction="#choose_mode" prefHeight="25.0" prefWidth="102.0" text="Read from user" toggleGroup="$choose_mode">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </RadioButton>
+                  <Label alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="237.0" layoutY="338.0" prefHeight="21.0" prefWidth="120.0" text="1.Choose mode" />
+                  <VBox alignment="CENTER_LEFT" layoutX="608.0" layoutY="503.0" prefHeight="40.0" prefWidth="280.0">
+                     <children>
+                        <RadioButton fx:id="choose_mode0" layoutX="608.0" layoutY="503.0" mnemonicParsing="false" onAction="#choose_mode" prefHeight="22.0" prefWidth="189.0" selected="true" text="Read from file">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="choose_mode" />
+                           </toggleGroup>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </RadioButton>
+                        <RadioButton fx:id="choose_mode1" layoutX="608.0" layoutY="527.0" mnemonicParsing="false" onAction="#choose_mode" prefHeight="18.0" prefWidth="185.0" text="Read from user" toggleGroup="$choose_mode">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </RadioButton>
+                     </children>
+                  </VBox>
                </children>
-            </Group>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="180.0" layoutY="220.0" prefHeight="40.0" prefWidth="400.0">
+               <children>
+                  <Label contentDisplay="TOP" layoutX="332.0" layoutY="395.0" prefHeight="21.0" prefWidth="120.0" text="2.Player name">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="text2_input" alignment="TOP_LEFT" layoutX="437.0" layoutY="390.0" prefHeight="31.0" prefWidth="280.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="180.0" layoutY="252.0" prefHeight="40.0" prefWidth="400.0">
+               <children>
+                  <Label contentDisplay="TOP" layoutX="332.0" layoutY="436.0" prefHeight="21.0" prefWidth="120.0" text="3.Max errors">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="text3_input" layoutX="437.0" layoutY="431.0" prefHeight="31.0" prefWidth="280.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="180.0" layoutY="292.0" prefHeight="40.0" prefWidth="400.0">
+               <children>
+                  <Label contentDisplay="TOP" layoutX="332.0" layoutY="478.0" prefHeight="21.0" prefWidth="120.0" text="4.File path">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="text4_input" layoutX="437.0" layoutY="473.0" prefHeight="31.0" prefWidth="280.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
          </children>
-      </Group>
-      <Group layoutX="-28.0" layoutY="16.0">
-         <children>
-            <Label contentDisplay="TOP" layoutX="180.0" layoutY="192.0" text="2.Player name" />
-            <TextField fx:id="text2_input" layoutX="285.0" layoutY="187.0" />
-         </children>
-      </Group>
-      <Group layoutX="-28.0" layoutY="57.0">
-         <children>
-            <Label contentDisplay="TOP" layoutX="180.0" layoutY="192.0" text="3.Max errors" />
-            <TextField fx:id="text3_input" layoutX="285.0" layoutY="187.0" />
-         </children>
-      </Group>
-      <Group layoutX="-28.0" layoutY="99.0">
-         <children>
-            <Label contentDisplay="TOP" layoutX="180.0" layoutY="192.0" text="4.File path" />
-            <TextField fx:id="text4_input" editable="false" layoutX="285.0" layoutY="187.0" />
-         </children>
-      </Group>
-      <Button fx:id="play_btn" layoutX="388.0" layoutY="352.0" mnemonicParsing="false" onAction="#play_btn" text="Play Now" />
-      <Text layoutX="14.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Designed by Mateusz Płonka">
+      </VBox>
+      <Button fx:id="play_btn" layoutX="448.0" layoutY="347.0" mnemonicParsing="false" onAction="#play_btn" prefHeight="35.0" prefWidth="85.0" text="Play Now">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Text layoutX="14.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Designed by Mateusz Płonka">
          <font>
             <Font size="12.0" />
          </font>
       </Text>
-      <Text fx:id="message" fill="RED" layoutX="14.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+      <Text fx:id="message" fill="RED" layoutX="14.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
