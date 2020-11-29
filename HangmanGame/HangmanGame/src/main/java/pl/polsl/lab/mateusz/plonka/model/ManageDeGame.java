@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 /**
  * Class controlls logic of game
+ *
  * @author Mateusz Płonka
  * @version v1.2
  */
@@ -37,7 +38,6 @@ public class ManageDeGame {
         return mode;
     }
 
-    
     /*Setters*/
     public void setMode(int mode) {
         if (mode > -1 && mode < 3) {
@@ -63,8 +63,8 @@ public class ManageDeGame {
      *
      * @param mode - [0] Read bank from file, [1] Read bank from user input
      * @param playerName - Name of the player in first round
-     * @param restArg - Maximum number of errors to be made in first round &
-     * Path of file to read words (only when Mode = 0)
+     * @param restArg - Maximum number of errors to be made in first round and
+     * path of file to read words (only when Mode = 0)
      */
     public ManageDeGame(String mode, String playerName, String... restArg) {
 
@@ -82,7 +82,7 @@ public class ManageDeGame {
 
         //Check argument with players name
         this.playerName = playerName;
-        if((this.playerName.equals(" ")) || (this.playerName.length() > 20)){
+        if ((this.playerName.equals(" ")) || (this.playerName.length() > 20)) {
             needToAsk = true;
         }
 
@@ -321,7 +321,6 @@ public class ManageDeGame {
         return succes;
     }
 
-    
     /**
      * Main method of game what carries gui and game algorythm managment
      *
@@ -402,5 +401,5 @@ public class ManageDeGame {
                 return true;
             }
         }
-    }  
+    }
 }
