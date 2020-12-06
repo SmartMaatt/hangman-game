@@ -1,0 +1,12 @@
+pl\polsl\lab\mateusz\plonka\exception\HangmanException.class
+pl\polsl\lab\mateusz\plonka\servlets\ShowWordBank.class
+pl\polsl\lab\mateusz\plonka\servlets\Logout.class
+pl\polsl\lab\mateusz\plonka\servlets\ShowScoreboard.class
+pl\polsl\lab\mateusz\plonka\model\HangmanGame.class
+pl\polsl\lab\mateusz\plonka\resources\CookieManager.class
+pl\polsl\lab\mateusz\plonka\servlets\HangmanGameServlet.class
+pl\polsl\lab\mateusz\plonka\view\View.class
+pl\polsl\lab\mateusz\plonka\JAXRSConfiguration.class
+pl\polsl\lab\mateusz\plonka\model\MyString.class
+pl\polsl\lab\mateusz\plonka\resources\JavaEE8Resource.class
+pl\polsl\lab\mateusz\plonka\model\Player.class

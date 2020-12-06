@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>HangmanGameServlet</servlet-name>
+        <servlet-class>pl.polsl.lab.mateusz.plonka.servlets.HangmanGameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>pl.polsl.lab.mateusz.plonka.servlets.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowWordBank</servlet-name>
+        <servlet-class>pl.polsl.lab.mateusz.plonka.servlets.ShowWordBank</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowScoreboard</servlet-name>
+        <servlet-class>pl.polsl.lab.mateusz.plonka.servlets.ShowScoreboard</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HangmanGameServlet</servlet-name>
+        <url-pattern>/app</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowWordBank</servlet-name>
+        <url-pattern>/show-word-bank</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowScoreboard</servlet-name>
+        <url-pattern>/show-scoreboard</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            15
+        </session-timeout>
+    </session-config>
+</web-app>
