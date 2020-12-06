@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: testHangmanGame
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.139 s <<< FAILURE! - in testHangmanGame
+testReadBankFail{String}[1]  Time elapsed: 0.012 s  <<< ERROR!
+java.lang.IllegalAccessError: class testHangmanGame (in unnamed module @0x3f191845) cannot access class pl.polsl.lab.mateusz.plonka.exception.HangmanException (in module pl.polsl.lab.mateusz.plonka) because module pl.polsl.lab.mateusz.plonka does not export pl.polsl.lab.mateusz.plonka.exception to unnamed module @0x3f191845
+	at testHangmanGame.testReadBankFail(testHangmanGame.java:34)
+
+testReadBankFail{String}[2]  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalAccessError: class testHangmanGame (in unnamed module @0x3f191845) cannot access class pl.polsl.lab.mateusz.plonka.exception.HangmanException (in module pl.polsl.lab.mateusz.plonka) because module pl.polsl.lab.mateusz.plonka does not export pl.polsl.lab.mateusz.plonka.exception to unnamed module @0x3f191845
+	at testHangmanGame.testReadBankFail(testHangmanGame.java:34)
+
+testReadBankFail{String}[3]  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IllegalAccessError: class testHangmanGame (in unnamed module @0x3f191845) cannot access class pl.polsl.lab.mateusz.plonka.exception.HangmanException (in module pl.polsl.lab.mateusz.plonka) because module pl.polsl.lab.mateusz.plonka does not export pl.polsl.lab.mateusz.plonka.exception to unnamed module @0x3f191845
+	at testHangmanGame.testReadBankFail(testHangmanGame.java:34)
+
