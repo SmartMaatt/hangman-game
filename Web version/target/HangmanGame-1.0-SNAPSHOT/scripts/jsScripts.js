@@ -9,7 +9,6 @@
  */
 function validateNumber(evt) {
     var theEvent = evt || window.event;
-
     // Handle paste
     if (theEvent.type === 'paste') {
         key = event.clipboardData.getData('text/plain');
@@ -63,4 +62,35 @@ function tryLetter(element) {
     }
 
     element.value = input2;
+}
+
+/**
+ * Converts given word bank info popup
+ * @param {int} exit [0] open pop-up, [1] close pop-up
+ * @param {String} wordBank bank of words to display
+ */
+function infoCard(exit, ...wordBank)
+{
+    let body = document.body;
+    let ICC = document.getElementById("ICC");
+    let text = "";
+
+    if (exit === 0)
+    {
+        var index = 1;
+        body.style.overflow = "hidden";
+        ICC.className = "ICC_active";
+        text = "<div id='infoCard_0' class='infoCard animate__animated animate__fadeInDown'>\n";
+        text += "<table>\n"
+        text += "<tr>\n<th>Id</th>\n<th>Word</th>\n</tr>\n"
+        for (let arg of wordBank) {
+            text += "<tr><td>" + (index++) + "</td><td>" + arg + "</td></tr>"; }
+        text += "</table><input type='button' value='Back' onclick='infoCard(1)'></div>";
+        ICC.innerHTML = text;
+    } else if (exit === 1)
+    {
+        body.style.overflow = "visible";
+        ICC.className = "";
+        ICC.innerHTML = "";
+    }
 }

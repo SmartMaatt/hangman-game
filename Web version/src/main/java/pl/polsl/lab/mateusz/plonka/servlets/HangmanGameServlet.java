@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import pl.polsl.lab.mateusz.plonka.model.HangmanGame;
+import pl.polsl.lab.mateusz.plonka.resources.DataBaseManager;
 import pl.polsl.lab.mateusz.plonka.view.View;
 
 /**
@@ -159,121 +160,142 @@ public class HangmanGameServlet extends HttpServlet {
         if (!session.isNew()) {
             int screanMode = (int) session.getAttribute("screanMode");
 
-            //Screan mode == 1, display scene "addWord"
-            if (screanMode == 1) {
+            switch (screanMode) {
+                //Screan mode == 1, display scene "addWord"
+                case 1: {
+                    //Get game from session
+                    HangmanGame myGame = (HangmanGame) session.getAttribute("myGame");
+                    //Exit adding new words and pressed "Play"
+                    if (request.getParameterMap().containsKey("gameKey")) {
+                        if (request.getParameter("gameKey").equals("true")) {
+                            //Change screanMode to "2"
+                            session.setAttribute("screanMode", 2);
+                            myGame.randNewWord();
+                            //Display scene "mainGame" [2]
+                            this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), "");
+                        } else {
+                            //Display scene "addWord" [1]
+                            this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), !myGame.getWordBank().isEmpty());
+                        }
 
-                //Get game from session
-                HangmanGame myGame = (HangmanGame) session.getAttribute("myGame");
+                    } else {
+                        //Added new word
+                        if (request.getParameterMap().containsKey("addWord")) {
+                            //Add new word to bank
+                            myGame.addWordToBank(request.getParameter("addWord"));
+                            //Display scene "addWord" [1]
+                            this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), true);
+                        } else {
+                            //Display scene "addWord" [1]
+                            this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), !myGame.getWordBank().isEmpty());
+                        }
+                    }
 
-                //Exit adding new words and pressed "Play"
-                if (request.getParameterMap().containsKey("gameKey")) {
-                    if (request.getParameter("gameKey").equals("true")) {
-                        //Change screanMode to "2"
-                        session.setAttribute("screanMode", 2);
-                        myGame.randNewWord();
-                        //Display scene "mainGame" [2]
+                    break;
+                }
+                //Screan mode == 2, display scene "mainGameScene"      
+                case 2: {
+                    HangmanGame myGame = (HangmanGame) session.getAttribute("myGame");
+                    //Input occured
+                    if (request.getParameterMap().containsKey("letter")) {
+
+                        //Convert input string to char
+                        char l = '#';
+                        if (request.getParameter("letter").length() == 1) {
+                            l = request.getParameter("letter").charAt(0);
+                        }
+
+                        //Display game board or game ending screan
+                        String msg = this.checkGameStatus(l, myGame);
+                        switch (msg) {
+                            case "win": {
+                                //Inc cookie win value
+                                myCookie.incValue(request, response, myGame.getMyPlayer().getName(), true);
+                                //Change session params
+                                session.setAttribute("screanMode", 3);
+                                session.setAttribute("gameStatus", true);
+                                //Update data base
+                                DataBaseManager myDataBase = (DataBaseManager) session.getAttribute("myDataBase");
+                                myDataBase.insertData("ROUNDS", myDataBase.getMainTableIndex(), myGame.getMyPlayer().getName(), true, myGame.getChosenWord(), myGame.getMaxErrors(), myGame.getMyPlayer().getTries());
+                                //Insert word bank to data base
+                                myGame.getWordBank().forEach(tmp -> {
+                                    myDataBase.insertData("BANK", myDataBase.getBankTableIndex(), tmp.getValue(), myDataBase.getMainTableIndex() - 1);
+                                });
+                                //Load endGame scene
+                                this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), true);
+                                break;
+                            }
+
+                            case "fail": {
+                                //Inc cookie fail value
+                                myCookie.incValue(request, response, myGame.getMyPlayer().getName(), false);
+                                //Change session params
+                                session.setAttribute("screanMode", 3);
+                                session.setAttribute("gameStatus", false);
+                                //Update data base
+                                DataBaseManager myDataBase = (DataBaseManager) session.getAttribute("myDataBase");
+                                myDataBase.insertData("ROUNDS", myDataBase.getLocalDataBase().size(), myGame.getMyPlayer().getName(), false, myGame.getChosenWord(), myGame.getMaxErrors(), myGame.getMyPlayer().getTries());
+                                //Insert word bank to data base
+                                myGame.getWordBank().forEach(tmp -> {
+                                    myDataBase.insertData("BANK", myDataBase.getBankTableIndex(), tmp.getValue(), myDataBase.getMainTableIndex() - 1);
+                                });
+                                //Load endGame scene
+                                this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), false);
+                                break;
+                            }
+
+                            default:
+                                this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), msg);
+                                break;
+                        }
+                    } else {
                         this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), "");
-                    } else {
-                        //Display scene "addWord" [1]
-                        this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), !myGame.getWordBank().isEmpty());
                     }
 
-                } else {
-                    //Added new word
-                    if (request.getParameterMap().containsKey("addWord")) {
-                        //Add new word to bank
-                        myGame.addWordToBank(request.getParameter("addWord"));
-                        //Display scene "addWord" [1]
-                        this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), true);
-                    } else {
-                        //Display scene "addWord" [1]
-                        this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), !myGame.getWordBank().isEmpty());
-                    }
+                    break;
                 }
+                //Screan mode == 3, display scene "endGameScene"        
+                case 3: {
+                    HangmanGame myGame = (HangmanGame) session.getAttribute("myGame");
+                    //Button was pressed
+                    if (request.getParameterMap().containsKey("update")) {
 
-                //Screan mode == 2, display scene "mainGameScene"    
-            } else if (screanMode == 2) {
+                        switch (request.getParameter("update")) {
+                            //Chosen "update"
+                            case "true": {
+                                session.setAttribute("screanMode", 1);
+                                session.removeAttribute("gameStatus");
+                                String pName = myGame.getMyPlayer().getName();
+                                myGame.newPlayer(pName);
+                                this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), true);
 
-                HangmanGame myGame = (HangmanGame) session.getAttribute("myGame");
+                                break;
+                            }
+                            //Chosen "Don't update"
+                            case "false": {
+                                session.setAttribute("screanMode", 2);
+                                session.removeAttribute("gameStatus");
+                                myGame.randNewWord();
+                                String pName = myGame.getMyPlayer().getName();
+                                myGame.newPlayer(pName);
+                                this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), "New word has been generated!");
 
-                //Input occured
-                if (request.getParameterMap().containsKey("letter")) {
-
-                    //Convert input string to char
-                    char l = '#';
-                    if (request.getParameter("letter").length() == 1) {
-                        l = request.getParameter("letter").charAt(0);
-                    }
-
-                    //Display game board or game ending screan
-                    String msg = this.checkGameStatus(l, myGame);
-                    if (msg.equals("win")) {
-
-                        //Inc cookie win value
-                        myCookie.incValue(request, response, myGame.getMyPlayer().getName(), true);
-
-                        //Change session params
-                        session.setAttribute("screanMode", 3);
-                        session.setAttribute("gameStatus", true);
-
-                        //Load endGame scene
-                        this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), true);
-
-                    } else if (msg.equals("fail")) {
-
-                        //Inc cookie fail value
-                        myCookie.incValue(request, response, myGame.getMyPlayer().getName(), false);
-
-                        //Change session params
-                        session.setAttribute("screanMode", 3);
-                        session.setAttribute("gameStatus", false);
-
-                        //Load endGame scene
-                        this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), false);
-
-                    } else {
-                        this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), msg);
-                    }
-
-                    //No input, just load game page    
-                } else {
-                    this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), "");
-                }
-
-                //Screan mode == 3, display scene "endGameScene"    
-            } else if (screanMode == 3) {
-
-                HangmanGame myGame = (HangmanGame) session.getAttribute("myGame");
-
-                //Button was pressed
-                if (request.getParameterMap().containsKey("update")) {
-
-                    //Chosen "update"
-                    if (request.getParameter("update").equals("true")) {
-                        session.setAttribute("screanMode", 1);
-                        session.removeAttribute("gameStatus");
-                        String pName = myGame.getMyPlayer().getName();
-                        myGame.newPlayer(pName);
-                        this.addWordScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), true);
-
-                        //Chosen "Don't update"    
-                    } else if (request.getParameter("update").equals("false")) {
-                        session.setAttribute("screanMode", 2);
-                        session.removeAttribute("gameStatus");
-                        myGame.randNewWord();
-                        String pName = myGame.getMyPlayer().getName();
-                        myGame.newPlayer(pName);
-                        this.mainGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), "New word has been generated!");
-
-                        //Send request but not chosen (somehow ;p )
+                                break;
+                            }
+                            //Send request but not chosen (somehow ;p )
+                            default:
+                                boolean gameStatus = (boolean) session.getAttribute("gameStatus");
+                                this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), gameStatus);
+                                break;
+                        }
                     } else {
                         boolean gameStatus = (boolean) session.getAttribute("gameStatus");
                         this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), gameStatus);
                     }
-                } else {
-                    boolean gameStatus = (boolean) session.getAttribute("gameStatus");
-                    this.endGameScene(myGame, myCookie.getCookieValue(request, response, myGame.getMyPlayer().getName()), gameStatus);
+                    break;
                 }
+                default:
+                    break;
             }
 
         } //If not
@@ -290,11 +312,42 @@ public class HangmanGameServlet extends HttpServlet {
                     myCookie.createCookie(response, playerName);
                 }
 
+                //Reading or creating data base
+                DataBaseManager myDataBase = new DataBaseManager();
+
+                if (!myDataBase.tableExists("ROUNDS")) {
+                    if (!myDataBase.tableExists("BANK")) {
+
+                        //Both tables doesn't exist [X][X]
+                        myDataBase.createTables("ROUNDS");
+                        myDataBase.createTables("BANK");
+                    } else {
+
+                        //Only bank table exists [X][Y]
+                        myDataBase.dropTable("BANK");
+                        myDataBase.createTables("ROUNDS");
+                        myDataBase.createTables("BANK");
+                    }
+                } else {
+                    if (!myDataBase.tableExists("BANK")) {
+
+                        //Only rounds table exists [Y][X]
+                        myDataBase.createTables("BANK");
+                        myDataBase.selectData("ROUNDS");
+                    } else {
+
+                        //Both exists [Y][Y]
+                        myDataBase.selectData("ROUNDS");
+                        myDataBase.selectData("BANK");
+                    }
+                }
+
                 //Create new game object
                 HangmanGame myGame = new HangmanGame(maxErrors, playerName);
 
                 //Setting up session atributes
                 session.setAttribute("myGame", myGame);
+                session.setAttribute("myDataBase", myDataBase);
                 session.setAttribute("screanMode", 1);
 
                 //Display scene "addWord" [1]

@@ -67,7 +67,7 @@ public class HangmanGame {
     private void createWordToFind(String word) throws HangmanException {
         this.wordToFind = new ArrayList<Character>();
 
-        if (word.length() > 1) {
+        if (word.length() > 0) {
             for (int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) != ' ') {
                     this.wordToFind.add('_');

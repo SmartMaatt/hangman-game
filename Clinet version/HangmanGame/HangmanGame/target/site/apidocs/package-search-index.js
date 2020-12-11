@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"pl.polsl.lab.mateusz.plonka"},{"l":"pl.polsl.lab.mateusz.plonka.exception"},{"l":"pl.polsl.lab.mateusz.plonka.model"},{"l":"pl.polsl.lab.mateusz.plonka.view"}]

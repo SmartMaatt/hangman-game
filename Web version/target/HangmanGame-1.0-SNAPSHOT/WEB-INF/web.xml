@@ -16,6 +16,10 @@
         <servlet-name>ShowScoreboard</servlet-name>
         <servlet-class>pl.polsl.lab.mateusz.plonka.servlets.ShowScoreboard</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowHistory</servlet-name>
+        <servlet-class>pl.polsl.lab.mateusz.plonka.servlets.ShowHistory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HangmanGameServlet</servlet-name>
         <url-pattern>/app</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ShowScoreboard</servlet-name>
         <url-pattern>/show-scoreboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowHistory</servlet-name>
+        <url-pattern>/history</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

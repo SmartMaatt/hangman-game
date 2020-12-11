@@ -8,5 +8,7 @@ pl\polsl\lab\mateusz\plonka\servlets\HangmanGameServlet.class
 pl\polsl\lab\mateusz\plonka\view\View.class
 pl\polsl\lab\mateusz\plonka\JAXRSConfiguration.class
 pl\polsl\lab\mateusz\plonka\model\MyString.class
+pl\polsl\lab\mateusz\plonka\servlets\ShowHistory.class
+pl\polsl\lab\mateusz\plonka\resources\DataBaseManager.class
 pl\polsl\lab\mateusz\plonka\resources\JavaEE8Resource.class
 pl\polsl\lab\mateusz\plonka\model\Player.class

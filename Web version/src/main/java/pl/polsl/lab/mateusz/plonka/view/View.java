@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.javatuples.Septet;
 
 import pl.polsl.lab.mateusz.plonka.model.MyString;
 import pl.polsl.lab.mateusz.plonka.model.Player;
@@ -68,7 +69,7 @@ public class View {
         if (looged) {
 
             out.println("<div id=\"statsWraper\"><p>Player: " + playerName + "</p><p>Wins: " + winsAndFails.get(0) + "</p><p>Fails: " + winsAndFails.get(1) + "</p></div>\n"
-                    + "<ul><li><a href=\"show-word-bank\">WordBank</a></li><li><a href=\"show-scoreboard\">Scoreboard</a></li><li><a href=\"logout\">Logout</a></li></ul>");
+                    + "<ul><li><a href=\"show-word-bank\">WordBank</a></li><li><a href=\"show-scoreboard\">Scoreboard</a></li><li><a href=\"history\">History</a></li><li><a href=\"logout\">Logout</a></li></ul>");
         }
 
         out.print("</div>\n");
@@ -142,6 +143,61 @@ public class View {
 
             out.print("</table>");
         }
+    }
+
+    /**
+     * Displays content of local data base reppo and converts it into html table
+     *
+     * @param localDataBase Data base reppo to convert into html
+     */
+    public void displayGameHistory(ArrayList<Septet<Integer, String, Boolean, String, Integer, Integer, ArrayList<String>>> localDataBase) {
+
+        if (!localDataBase.isEmpty()) {
+            out.print("<table>\n"
+                    + "  <tr>\n"
+                    + "    <th>Id</th>\n"
+                    + "    <th>PlayerName</th>\n"
+                    + "    <th>GameStatus</th>\n"
+                    + "    <th>PlayedWord</th>\n"
+                    + "    <th>MaxErrors</th>\n"
+                    + "    <th>Tries</th>\n"
+                    + "    <th>WordBank</th>\n"
+                    + "  </tr>\n");
+
+            //Iterate by all tuples
+            for (Septet<Integer, String, Boolean, String, Integer, Integer, ArrayList<String>> tuple : localDataBase) {
+
+                String status;
+                if (tuple.getValue2()) {
+                    status = "won";
+                } else {
+                    status = "failed";
+                }
+
+                out.print("<tr>\n"
+                        + "<td>" + tuple.getValue0() + "</td>\n"
+                        + "<td>" + tuple.getValue1() + "</td>\n"
+                        + "<td>" + status + "</td>\n"
+                        + "<td>" + tuple.getValue3() + "</td>\n"
+                        + "<td>" + tuple.getValue4() + "</td>\n"
+                        + "<td>" + tuple.getValue5() + "</td>\n"
+                        + "<td><input type=\"button\" value=\"Show\" onclick=\"infoCard(0,");
+
+                int wordBankSize = tuple.getValue6().size();
+                for (int i = 0; i < wordBankSize; i++) {
+                    out.print("'" + tuple.getValue6().get(i) + "'");
+                    if (i != wordBankSize - 1) {
+                        out.print(", ");
+                    }
+                }
+
+                out.print(")\"></td>\n"
+                        + "</tr>\n");
+            }
+
+            out.print("</table>");
+        }
+
     }
 
     /**
