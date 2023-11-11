@@ -33,21 +33,14 @@ This repository hosts a **Java** application designed for playing the classic ga
 
 ## Screenshots
 
-<figure>
-  <img src="https://smartmatt.pl/github/hangman-game/hangman-game-presentation.png" title="Presentation of both versions" width=75%>
-  <figcaption>Presentation of both versions.</figcaption>
-</figure>
+![Presentation of both versions](https://smartmatt.pl/github/hangman-game/hangman-game-presentation.png)
+*Presentation of both versions.*
 
-<figure>
-  <img src="https://smartmatt.pl/github/hangman-game/hangman-web-adding-words.png" title="Manually adding extra words to the Payara database in the web version." width=75%>
-  <figcaption>Manually adding extra words to the Payara database in the web version.</figcaption>
-</figure>
+![Manually adding extra words to the Payara database in the web version](https://smartmatt.pl/github/hangman-game/hangman-web-adding-words.png)
+*Manually adding extra words to the Payara database in the web version.*
 
-<figure>
-  <img src="https://smartmatt.pl/github/hangman-game/hangman-client-creating-player.png" title="Creating the player" width=75%>
-  <figcaption>The process of creating a user in the client version of the application.</figcaption>
-</figure>
-
+![Creating the player](https://smartmatt.pl/github/hangman-game/hangman-client-creating-player.png)
+*The process of creating a user in the client version of the application.*
 
 ## Instalation
 
