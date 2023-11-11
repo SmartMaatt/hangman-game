@@ -40,6 +40,7 @@ This repository hosts a **Java** application designed for playing the classic ga
 *Manually adding extra words to the Payara database in the web version.*
 
 ![Creating the player](https://smartmatt.pl/github/hangman-game/hangman-client-creating-player.png)
+
 *The process of creating a user in the client version of the application.*
 
 ## Instalation
